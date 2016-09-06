@@ -10,7 +10,7 @@ public class Token {
     public Token(Snake s ){
         x=(int)(Math.random()*395);
         y=(int)(Math.random()*395);
-        snake s;
+        snake = s;
     }
     public void changePosition(){
          x=(int)(Math.random()*395);

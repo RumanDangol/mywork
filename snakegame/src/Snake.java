@@ -1,7 +1,7 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.List;
+import java.util.List;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class Snake {
     
     public Snake(){
         
-        snakePoints = new ArrayList<>();
+        snakePoints = new ArrayList<Point>();
         xDir = 0;
         yDir = 0;
         isMoving =false;
@@ -27,10 +27,10 @@ public class Snake {
         snakePoints.add(new Point(STARTX-i*4,STARTY));
     }
     }
-    public void draw(graphics g){
+    public void draw(Graphics g){
         g.setColor(Color.white);
         for(Point p : snakePoints){
-            g.fillRect(p.getX(),p.getY(),4,4);
+            g.fillRect((int)p.getX(),(int) p.getY(), 4, 4);
         }
         
     }
@@ -38,8 +38,13 @@ public class Snake {
         if(isMoving){
         Point  temp=snakePoints.get(0);
         Point last =snakePoints.get(snakePoints.size()-1);
-        Point  newStart = new Point(temp.getX() + xDir * 4, temp.getY()+ yDir * 4);
-       for(int i=snakePoints.size()-1;i>=1;i--){
+        
+        Point  newStart = new Point( (int)temp.getX() + xDir * 4,(int) temp.getY()+ yDir * 4);
+        
+       
+        
+        
+        for(int i=snakePoints.size()-1;i>=1;i--){
     snakePoints.set(i,snakePoints.get(i-1 ));
        }
        
@@ -69,10 +74,10 @@ public class Snake {
     
     
     public int getXDir(){
-        return xDir;
+        return (int) xDir;
     }
     public int getYDir(){
-        return yDir;
+        return(int) yDir;
     }
     public void setXDir(int x){
         xDir=x;
@@ -83,10 +88,10 @@ public class Snake {
     
     //head of the Snake
     public int getX(){
-        return snakePoints.get(0).getX();
+        return (int) snakePoints.get(0).getX();
     }
     public int getY(){
-        return snakePoints.get(0).getY();
+        return (int) snakePoints.get(0).getY();
     }
 
     public void setElongate(boolean b){
